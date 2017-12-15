@@ -60,9 +60,9 @@ interface Dialect
     public function extractFirstPersonVerbs(array $words);
 
     /**
-     * @param   array   $words
+     * @param   array   $items
      * @param   String  $callback
      * @return  array
      */
-    public function doFilter(array $words, $callback);
+    public function doFilter(array $items, $callback);
 }

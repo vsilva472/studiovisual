@@ -173,7 +173,7 @@ class Booglan extends Dialect implements iDialect
      * a new array with each word value
      *
      * @param   array   $words
-     * @return  array of values
+     * @return  array
      */
     public function extractValuesFromWordList(array $words)
     {
@@ -183,12 +183,12 @@ class Booglan extends Dialect implements iDialect
     /**
      * Iterates over an list and apply some logic via callback
      *
-     * @param   array $words
-     * @param   String $callback
+     * @param   array   $items
+     * @param   String  $callback
      * @return  array
      */
-    public function doFilter(array $words, $callback)
+    public function doFilter(array $items, $callback)
     {
-        return array_filter($words, array($this, $callback));
+        return array_filter($items, array($this, $callback));
     }
 }
