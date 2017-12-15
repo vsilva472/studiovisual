@@ -37,7 +37,7 @@ class Booglan extends Dialect implements iDialect
      * Check if a single word ends with one of bar letters
      *
      * @param   String  $word
-     * @return bool
+     * @return  bool
      */
     private function isWordEndingWithBarLetter($word) {
         $word_length    = strlen($word);
@@ -80,6 +80,17 @@ class Booglan extends Dialect implements iDialect
     }
 
     /**
+     * Check if a given number is a beautiful number with base on Booglan rules
+     *
+     * @param   int $number
+     * @return  bool
+     */
+    public function isBeautifulNumber($number)
+    {
+        return (($number >= 422224) && ($number % 3 == 0));
+    }
+
+    /**
      * Iterates over an array of words and return the prepositions
      *
      * @param   array   $words
@@ -113,6 +124,65 @@ class Booglan extends Dialect implements iDialect
     }
 
     /**
+     * Extract de value from a give word with base on Booglan rules
+     *
+     * @param   string  $word
+     * @return  int
+     */
+    public function extractWordValue($word)
+    {
+        $value      = 0;
+        $letters    = str_split($word);
+
+        foreach($letters as $key => $letter) $value += $this->getLetterValue($letter) * (pow(20, $key));
+
+        return $value;
+    }
+
+    /**
+     * Get a value of a letter with base on Booglan alphabet
+     *
+     * Note: if a letter of word is not a valid Booglan letter this letter will be ignored
+     *
+     * @param   String  $letter
+     * @return  int
+     */
+    private function getLetterValue($letter)
+    {
+        $value = array_search($letter, $this->alphabet);
+
+        if (!is_numeric($value)) return 0;
+
+        return $value;
+    }
+
+    /**
+     * Iterates over an array of numbers and returns
+     * a new array only with booglan beautiful numbers
+     *
+     * @param   array   $numbers
+     * @return  array of verbs
+     */
+    public function extractBeautifulNumbers(array $numbers)
+    {
+        return $this->doFilter($numbers, 'isBeautifulNumber');
+    }
+
+    /**
+     * Iterates over an array of words and returns
+     * a new array with each word value
+     *
+     * @param   array   $words
+     * @return  array of values
+     */
+    public function extractValuesFromWordList(array $words)
+    {
+        return array_map(array($this, 'extractWordValue'), $words);
+    }
+
+    /**
+     * Iterates over an list and apply some logic via callback
+     *
      * @param   array $words
      * @param   String $callback
      * @return  array

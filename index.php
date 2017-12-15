@@ -28,6 +28,12 @@ $verbs_count = count($verbs);
 $fpVerbs = $Booglan->extractFirstPersonVerbs($verbs);
 $fpVerbs_count = count($fpVerbs);
 
+$wordsValues = $Booglan->extractValuesFromWordList($words);
+$beautifullValues = $Booglan->extractBeautifulNumbers($wordsValues);
+
+$uniqueBefautifulNumbers = array_unique($beautifullValues);
+$uniqueBefautifulNumbers_count = count( $uniqueBefautifulNumbers );
+
 ?>
 
 <!doctype html>
@@ -54,6 +60,11 @@ $fpVerbs_count = count($fpVerbs);
         <li>
             <h3>Quantos verbos existentes no texto B estão em primeira pessoa?</h3>
             <p>R: <?php print $fpVerbs_count; ?></p>
+        </li>
+
+        <li>
+            <h3>Quantos números bonitos <em>distintos</em> existem no texto B?</h3>
+            <p>R: <?php print $uniqueBefautifulNumbers_count; ?></p>
         </li>
     </ol>
 </body>
