@@ -6,7 +6,7 @@
  * Time: 12:25
  */
 
-namespace Vinicius\Booglan\Readers\Contracts;
+namespace StudioVisual\App\Readers\Contracts;
 
 
 interface Reader

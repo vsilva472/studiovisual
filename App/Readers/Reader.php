@@ -6,7 +6,7 @@
  * Time: 12:26
  */
 
-namespace Vinicius\Booglan\Readers;
+namespace StudioVisual\App\Readers;
 
 
 abstract class Reader

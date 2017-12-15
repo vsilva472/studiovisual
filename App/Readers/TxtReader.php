@@ -6,10 +6,10 @@
  * Time: 12:27
  */
 
-namespace Vinicius\Booglan\Readers;
+namespace StudioVisual\App\Readers;
 
-use Vinicius\Booglan\Readers\Reader as AbstractReader;
-use Vinicius\Booglan\Readers\Contracts\Reader as iReader;
+use StudioVisual\App\Readers\Reader as AbstractReader;
+use StudioVisual\App\Readers\Contracts\Reader as iReader;
 
 class TxtReader extends AbstractReader implements iReader
 {

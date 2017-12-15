@@ -8,9 +8,12 @@
 
 require_once "vendor/autoload.php";
 
-use \Vinicius\Booglan\Readers\TxtReader;
+use StudioVisual\App\Readers\TxtReader;
 
 $filepath = 'config/a.txt';
 $TxtReader = new TxtReader( $filepath );
 
-echo $TxtReader->getData();
+$data = trim($TxtReader->getData());
+
+echo $data;
+
