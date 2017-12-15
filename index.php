@@ -8,17 +8,25 @@
 
 require_once "vendor/autoload.php";
 
-use StudioVisual\App\Readers\TxtReader;
-use StudioVisual\App\Dialetos\Booglan\Booglan;
+use StudioVisual\App\Readers\TxtReader\Reader as TxtReader;
+use StudioVisual\App\Dialects\Booglan\Booglan;
 
 $filepath = 'config/b.txt';
-$TxtReader = new TxtReader( $filepath );
+$TxtReader = new TxtReader($filepath);
 
-$data = trim($TxtReader->getData());
+$words = trim($TxtReader->getData());
+$words = explode(' ', $words);
 
-$Booglan = new Booglan( 'twhzkdfvcjxlrnqmgpsb' );
-$prepositions_count = $Booglan->getPropositionCountFrom($data);
+$Booglan = new Booglan();
 
+$prepositions = $Booglan->extractPrepositions($words);
+$prepositions_count = count($prepositions);
+
+$verbs = $Booglan->extractVerbs($words);
+$verbs_count = count($verbs);
+
+$fpVerbs = $Booglan->extractFirstPersonVerbs($verbs);
+$fpVerbs_count = count($fpVerbs);
 
 ?>
 
@@ -36,6 +44,16 @@ $prepositions_count = $Booglan->getPropositionCountFrom($data);
         <li>
             <h3>Quantas preposições existem no texto B?</h3>
             <p>R: <?php print $prepositions_count; ?></p>
+        </li>
+
+        <li>
+            <h3>Quantos verbos existem no texto B?</h3>
+            <p>R: <?php print $verbs_count; ?></p>
+        </li>
+
+        <li>
+            <h3>Quantos verbos existentes no texto B estão em primeira pessoa?</h3>
+            <p>R: <?php print $fpVerbs_count; ?></p>
         </li>
     </ol>
 </body>
