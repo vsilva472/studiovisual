@@ -1,0 +1,21 @@
+{
+  "name": "viniciussilva/booglan",
+  "description": "Projeto para primeira fase da entrevista",
+  "keywords": [
+    "booglan",
+    "bootstrap",
+    "php"
+  ],
+  "homepage": "http://www.viniciusdesouza.com.br",
+  "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Silva Vinicius",
+      "homepage": "http://www.viniciusdesouza.com.br"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5"
+  }
+}
