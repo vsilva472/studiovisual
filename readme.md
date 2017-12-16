@@ -14,7 +14,7 @@ Clone o projeto
 
 Com uma janela de terminal, navegue até a raiz do projeto clonado e execute o comando **composer install**
 
-Após a isntalação do composer execute o comando **php -S localhost:8000**
+Após a instalação do composer execute o comando **php -S localhost:8000**
 
 Abra o navegador web se insira a url *http://localhost:8000* para ver as respostas
 
