@@ -64,5 +64,13 @@ interface Dialect
      * @param   String  $callback
      * @return  array
      */
-    public function doFilter(array $items, $callback);
+    function doFilter(array $items, $callback);
+
+    /**
+     * Sort ASC a given list
+     *
+     * @param   array   $list
+     * @return  array
+     */
+    public function doSort(array $list);
 }

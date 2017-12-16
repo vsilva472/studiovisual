@@ -181,7 +181,7 @@ class Booglan extends Dialect implements iDialect
     }
 
     /**
-     * Iterates over an list and apply some logic via callback
+     * Iterates over a list and apply some logic via callback
      *
      * @param   array   $items
      * @param   String  $callback
@@ -190,5 +190,50 @@ class Booglan extends Dialect implements iDialect
     public function doFilter(array $items, $callback)
     {
         return array_filter($items, array($this, $callback));
+    }
+
+    /**
+     * Sort ASC a given list
+     *
+     * @param   array   $list
+     * @return  array
+     */
+    public function doSort(array $list)
+    {
+        usort($list, array($this, 'strCmp'));
+        return $list;
+    }
+
+    /**
+     * Returns < 0 if str1 is less than str2; > 0 if str1 is greater than str2, and 0 if they are equal.
+     *
+     * Note: This function is similar to native php strcmp, but with Booglan alphabet rules
+     *
+     * @param   String  $str1
+     * @param   String  $str2
+     * @return  int
+     */
+    private function strCmp($str1, $str2)
+    {
+        $index          = 0;
+        $str1_len       = strlen($str1);
+        $str2_len       = strlen($str2);
+        $lower_length   = min($str1_len, $str2_len);
+
+        while ($index < $lower_length)
+        {
+            $str1_letter_val = $this->getLetterValue($str1[$index]);
+            $str2_letter_val = $this->getLetterValue($str2[$index]);
+
+            if ($str1_letter_val > $str2_letter_val) return 1;
+            if ($str2_letter_val > $str1_letter_val) return -1;
+
+            $index++;
+        }
+
+        if ($str1_len > $str2_len) return 1;
+        if ($str2_len > $str1_len) return -1;
+
+        return 0;
     }
 }
