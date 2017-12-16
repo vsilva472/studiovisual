@@ -6,12 +6,18 @@
  * Time: 12:22
  */
 
+/*---------------- AREA EDITÁVEL ---------------------*/
+
+// troque de b.txt para a.txt para ver as respostas controle.
+$filepath = 'config/b.txt';
+
+/*------------- FIM DA AREA EDITÁVEL ------------------*/
+
 require_once "vendor/autoload.php";
 
 use StudioVisual\App\Readers\TxtReader\Reader as TxtReader;
 use StudioVisual\App\Dialects\Booglan\Booglan;
 
-$filepath = 'config/b.txt';
 $TxtReader = new TxtReader( $filepath );
 
 $words = trim( $TxtReader->getData() );
@@ -34,7 +40,7 @@ $beautifullValues = $Booglan->extractBeautifulNumbers( $wordsValues );
 $uniqueBefautifulNumbers = array_unique( $beautifullValues );
 $uniqueBefautifulNumbers_count = count( $uniqueBefautifulNumbers );
 
-$sortedList = $Booglan->doSort($words);
+$sortedList = $Booglan->doSort( $words );
 $sortedList = array_unique( $sortedList );
 
 $sortedStrl = implode( ' ', $sortedList );
@@ -90,7 +96,7 @@ $sortedStrl = implode( ' ', $sortedList );
     <div class="row">
         <a name="prepositions"></a>
         <div class="col-sm-6 col-sm-offset-3 answer-block" id="prepositions">
-            <p>E no Texto B, quantos números bonitos distintos existem?</p>
+            <p>E no Texto B, quantas preposições existem?</p>
             <div class="alert alert-info">
                 <p class="answer">
                     <b>Resposta:</b> Existem
