@@ -4,7 +4,7 @@ Projeto para a primeira fase da entrevista.
 
 ## Requisitos
 
-PHP 5.4+ instalado na linha de comando globalmente para levantar servidor
+PHP 5.5+ instalado na linha de comando globalmente para levantar servidor
 
 Composer (https://getcomposer.org/)
 
